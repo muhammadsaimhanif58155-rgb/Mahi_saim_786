@@ -1,112 +1,96 @@
 <!doctype html>
-<html lang="en">
+<html lang="ur" dir="rtl">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Happy Birthday Mahi 🎉</title>
-  <meta name="description" content="A beautiful birthday surprise for Mahi — open the gift!" />
+  <title>سالگرہ مبارک ماہی 🎉</title>
+  <meta name="description" content="ماہی کے لیے خوبصورت سالگرہ کا سرپرائز — تحفہ کھولیں!" />
   <style>
     /* ===========================
        Reset & Base
        =========================== */
     :root{
-      --bg1: #0f1724;
-      --bg2: #3b2f63;
-      --card-bg: rgba(255,255,255,0.06);
+      --bg1: #071225;
+      --bg2: #3b2556;
+      --card-bg: rgba(255,255,255,0.04);
       --accent1: #ff8fb1;
       --accent2: #7be6ff;
       --accent3: #ffd36b;
-      --glass: rgba(255,255,255,0.06);
-      --glass-2: rgba(255,255,255,0.03);
-      --text: #f7f9fb;
-      --muted: rgba(247,249,251,0.75);
-      --success: #7ef7b8;
-      --shadow: 0 8px 30px rgba(2,6,23,0.6);
+      --glass: rgba(255,255,255,0.04);
+      --text: #f8fbff;
+      --muted: rgba(248,251,255,0.78);
+      --shadow: 0 10px 40px rgba(2,6,23,0.6);
       --radius: 16px;
-      --mobile-break: 640px;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-      background: radial-gradient(1200px 600px at 10% 10%, rgba(255,140,165,0.08), transparent 8%),
-                  radial-gradient(800px 400px at 90% 90%, rgba(123,230,255,0.04), transparent 8%),
-                  linear-gradient(160deg, var(--bg1), var(--bg2));
+      font-family: "Noto Nastaliq Urdu", "Noto Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background:
+        radial-gradient(1000px 500px at 10% 10%, rgba(255,140,165,0.06), transparent 8%),
+        radial-gradient(700px 350px at 90% 90%, rgba(123,230,255,0.04), transparent 8%),
+        linear-gradient(160deg, var(--bg1), var(--bg2));
       color:var(--text);
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       overflow-x:hidden;
+      -webkit-text-size-adjust:100%;
+      -ms-text-size-adjust:100%;
     }
 
-    /* ===========================
-       Decorative layers: emoji-fall & balloons
-       =========================== */
-    /* Container that holds falling emoji particles behind UI */
-    .emoji-layer, .confetti-canvas{
-      position:fixed;
-      top:0;left:0;right:0;bottom:0;
-      pointer-events:none; /* never block clicks */
-      z-index:0; /* behind main UI which uses z-index: 10+ */
-    }
-
-    /* floating balloons background */
-    .balloons {
+    /* Layers behind UI */
+    .emoji-layer, .balloons {
       position:fixed;
       inset:0;
-      z-index:1;
       pointer-events:none;
-      overflow:hidden;
+      z-index:0;
     }
+
+    /* Balloons */
     .balloon {
       position:absolute;
       font-size:48px;
-      opacity:0.9;
+      opacity:0.95;
       transform-origin:center;
       filter: drop-shadow(0 6px 12px rgba(0,0,0,0.35));
       will-change: transform;
     }
-    /* gentle float animation */
     @keyframes floaty {
-      0% { transform: translateY(0) translateX(0) rotate(0deg); opacity:0.95 }
-      50% { transform: translateY(-18px) translateX(6px) rotate(3deg); opacity:1 }
-      100% { transform: translateY(0) translateX(0) rotate(0deg); opacity:0.95 }
+      0% { transform: translateY(0) translateX(0) rotate(0deg); }
+      50% { transform: translateY(-16px) translateX(6px) rotate(3deg); }
+      100% { transform: translateY(0) translateX(0) rotate(0deg); }
     }
 
-    /* ===========================
-       Page layout
-       =========================== */
+    /* Page layout */
     .page {
       position:relative;
       min-height:100vh;
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:40px;
-      z-index:10; /* above emoji & balloons */
+      padding:36px;
+      z-index:10;
     }
-
     .card {
       width:100%;
       max-width:980px;
       border-radius:var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       box-shadow: var(--shadow);
       backdrop-filter: blur(8px) saturate(120%);
       -webkit-backdrop-filter: blur(8px) saturate(120%);
       padding:36px;
       display:flex;
-      gap:24px;
+      gap:22px;
       align-items:center;
       justify-content:space-between;
     }
     @media (max-width:900px){
-      .card{flex-direction:column;padding:24px}
+      .card{flex-direction:column;padding:20px}
     }
 
-    /* ===========================
-       Heading / Title with glow & subtle anim
-       =========================== */
+    /* Heading */
     header.hero {
       flex:1;
       text-align:center;
@@ -117,21 +101,17 @@
       margin:0 0 12px 0;
       font-size: clamp(28px, 6vw, 48px);
       line-height:1.02;
-      letter-spacing: -0.02em;
-      font-weight:700;
+      font-weight:800;
       color:var(--text);
+      letter-spacing:-0.02em;
       text-shadow:
-        0 6px 30px rgba(0,0,0,0.6),
-        0 0 18px rgba(255,255,255,0.02);
+        0 6px 30px rgba(0,0,0,0.5),
+        0 0 20px rgba(255,255,255,0.02);
     }
-
-    /* animated glow */
     .glow-wrap {
       display:inline-block;
       padding:8px 18px;
       border-radius:999px;
-      background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-      box-shadow: 0 8px 30px rgba(123,230,255,0.06), 0 0 20px rgba(255,143,177,0.04) inset;
       position:relative;
     }
     .glow {
@@ -141,8 +121,8 @@
       z-index:-1;
       filter: blur(20px);
       opacity:0.9;
-      background: radial-gradient(closest-side, rgba(255,143,177,0.15), transparent),
-                  radial-gradient(closest-side, rgba(123,230,255,0.07), transparent);
+      background: radial-gradient(closest-side, rgba(255,143,177,0.12), transparent),
+                  radial-gradient(closest-side, rgba(123,230,255,0.06), transparent);
       animation: glowPulse 3.6s ease-in-out infinite;
     }
     @keyframes glowPulse {
@@ -156,22 +136,10 @@
       font-size:14px;
     }
 
-    /* small animated emojis next to heading */
-    .header-emojis {
-      display:inline-flex;
-      gap:8px;
-      vertical-align:middle;
-      margin-left:8px;
-      transform:translateY(2px);
-    }
-    .header-emojis span{
-      display:inline-block;
-      animation: emojiBounce 2.2s ease-in-out infinite;
-      font-size:1.05em;
-    }
+    .header-emojis { display:inline-flex; gap:8px; vertical-align:middle; margin-right:8px; }
+    .header-emojis span { display:inline-block; animation: emojiBounce 2.2s ease-in-out infinite; font-size:1.05em; }
     .header-emojis span:nth-child(2){ animation-delay:0.15s }
     .header-emojis span:nth-child(3){ animation-delay:0.3s }
-
     @keyframes emojiBounce {
       0%{transform:translateY(0)}
       30%{transform:translateY(-8px)}
@@ -179,9 +147,7 @@
       100%{transform:translateY(0)}
     }
 
-    /* ===========================
-       Decorative cake area
-       =========================== */
+    /* Cake area */
     .cake-zone{
       width:320px;
       max-width:36vw;
@@ -189,16 +155,12 @@
       display:flex;
       flex-direction:column;
       align-items:center;
-      gap:16px;
+      gap:14px;
       padding:18px;
       border-radius:14px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.015));
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       border: 1px solid rgba(255,255,255,0.03);
     }
-    @media (max-width:900px){
-      .cake-zone{width:100%;max-width:520px}
-    }
-
     .cake {
       position:relative;
       width:220px;
@@ -207,28 +169,18 @@
       align-items:center;
       justify-content:center;
       border-radius:14px;
-      background: linear-gradient(180deg,#fff7,#fff0);
-      color:#333;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.45), 0 1px 0 rgba(255,255,255,0.02) inset;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.45);
       overflow:visible;
     }
-
-    /* use an emoji cake large & decorations */
     .cake-emoji {
       font-size:64px;
       filter: drop-shadow(0 10px 18px rgba(0,0,0,0.35));
     }
-
-    /* sparkles around cake */
     .sparkle {
       position:absolute;
-      width:8px;
-      height:8px;
-      border-radius:50%;
+      width:8px;height:8px;border-radius:50%;
       background:linear-gradient(135deg,var(--accent3),var(--accent1));
       box-shadow:0 0 10px rgba(255,255,255,0.6);
-      opacity:0.95;
-      transform-origin:center;
       animation: sparkleFloat 2.4s ease-in-out infinite;
     }
     .sparkle.small{width:6px;height:6px;box-shadow:0 0 6px rgba(255,255,255,0.5)}
@@ -238,16 +190,8 @@
       100%{transform:translateY(0) scale(0.9);opacity:0.9}
     }
 
-    /* ===========================
-       Gift button
-       =========================== */
-    .gift-btn-wrap {
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:12px;
-      width:100%;
-    }
+    /* Buttons */
+    .gift-cta { display:flex; width:100%; justify-content:center; margin-top:12px; }
     .btn {
       appearance:none;
       border:0;
@@ -255,38 +199,25 @@
       padding:14px 20px;
       border-radius:12px;
       font-size:18px;
-      font-weight:600;
+      font-weight:700;
       background:linear-gradient(90deg,var(--accent1),var(--accent2));
       color: #071428;
-      box-shadow: 0 8px 24px rgba(123,230,255,0.12), 0 2px 0 rgba(255,255,255,0.08) inset;
+      box-shadow: 0 10px 30px rgba(123,230,255,0.12), 0 2px 0 rgba(255,255,255,0.08) inset;
       transition: transform .18s cubic-bezier(.2,.9,.3,1), box-shadow .18s;
       touch-action: manipulation;
     }
     .btn:active{ transform:translateY(2px) scale(.997) }
     .btn:focus{ outline:3px solid rgba(123,230,255,0.18); outline-offset:3px }
+    .btn.secondary { background: linear-gradient(90deg,var(--accent3), #ffd8c7); color:#1a0a00; }
 
-    .btn.secondary {
-      background: linear-gradient(90deg,var(--accent3), #ffd8c7);
-      color:#1a0a00;
-    }
-
-    /* Gift CTA large mobile friendly */
-    .gift-cta {
-      display:flex;
-      width:100%;
-      justify-content:center;
-    }
-
-    /* ===========================
-       Intro overlay for second section (gift)
-       =========================== */
+    /* Stage (gift scene) */
     .stage {
       position:fixed;
       inset:0;
       display:flex;
       align-items:center;
       justify-content:center;
-      background: linear-gradient(180deg, rgba(2,6,23,0.45), rgba(2,6,23,0.6));
+      background: linear-gradient(180deg, rgba(2,6,23,0.45), rgba(2,6,23,0.65));
       z-index:30;
       padding:28px;
       opacity:0;
@@ -311,7 +242,7 @@
       gap:18px;
     }
 
-    /* gift box */
+    /* Gift */
     .gift {
       width:320px;
       height:220px;
@@ -324,11 +255,11 @@
     .box-body{
       width:260px;
       height:160px;
-      background: linear-gradient(180deg,#FF5E84,#FF9ABB);
+      background: linear-gradient(180deg,#FF6B95,#FFB0C9);
       border-radius:12px;
       position:absolute;
       bottom:0;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.45), 0 1px 0 rgba(255,255,255,0.05) inset;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.45);
       display:flex;
       align-items:center;
       justify-content:center;
@@ -338,7 +269,6 @@
     .box-body.ribbon::before, .box-body.ribbon::after{
       content:'';
       position:absolute;
-      background:linear-gradient(90deg, rgba(255,255,255,0.2), rgba(0,0,0,0.05));
       border-radius:6px;
     }
     .box-body.ribbon::before{
@@ -367,7 +297,6 @@
       box-shadow: 0 16px 30px rgba(0,0,0,0.45);
       transition: transform .9s cubic-bezier(.2,.9,.2,1), top .9s;
     }
-    /* lid when opened */
     .gift.open .box-lid {
       transform: rotateX(75deg) translateY(-28px) scale(1.02);
       top:-36px;
@@ -376,8 +305,6 @@
       transform:translateY(6px) scale(1.02);
       box-shadow: 0 36px 60px rgba(0,0,0,0.6);
     }
-
-    /* small ribbon bow on lid */
     .bow {
       width:62px;height:28px;border-radius:20px;background:linear-gradient(90deg,#FFF3,#0002);
       display:flex;align-items:center;justify-content:center;
@@ -385,7 +312,6 @@
       box-shadow:0 6px 12px rgba(0,0,0,0.18) inset;
     }
 
-    /* sparkles inside opened gift */
     .inside-sparkle {
       position:absolute;
       width:10px;height:10px;border-radius:50%;
@@ -400,7 +326,7 @@
       100%{transform:translateY(-30px) scale(.9);opacity:0}
     }
 
-    /* message pane */
+    /* Message */
     .message-wrap{
       width:100%;
       max-width:780px;
@@ -411,31 +337,31 @@
       color:var(--muted);
       max-height:56vh;
       overflow:auto;
-      font-size:15px;
-      line-height:1.45;
+      font-size:17px;
+      line-height:1.6;
       display:none;
+      direction:rtl;
+      text-align:right;
     }
     .message-wrap.show{ display:block }
 
-    /* typed line style */
     .line {
       opacity:0;
       transform: translateY(6px);
       transition: opacity .45s ease, transform .45s ease;
       white-space:pre-wrap;
+      margin:6px 0;
     }
     .line.visible { opacity:1; transform:translateY(0) }
 
-    /* celebrate again button */
     .celebrate-wrap {
       display:flex;
       gap:12px;
-      margin-top:12px;
+      margin-top:8px;
       align-items:center;
       justify-content:center;
     }
 
-    /* confetti pieces (emoji) stacking layer to create burst */
     .confetti {
       position:absolute;
       font-size:20px;
@@ -444,141 +370,115 @@
       text-shadow:0 4px 8px rgba(0,0,0,0.45);
     }
 
-    /* footer small notes */
     footer{
       text-align:center;
       color:var(--muted);
       font-size:13px;
-      margin-top:6px;
+      margin-top:10px;
+      z-index:12;
+    }
+
+    /* Accessibility: larger tap target on mobile */
+    @media (max-width:640px){
+      .btn { padding:16px 22px; font-size:18px; border-radius:14px; }
+      .cake-emoji{ font-size:56px }
     }
   </style>
 </head>
 <body>
-  <!-- Emoji/Confetti background layer (behind everything) -->
+  <!-- Background emoji/confetti layer -->
   <div class="emoji-layer" aria-hidden="true"></div>
 
-  <!-- Floating balloons background -->
+  <!-- Floating balloons -->
   <div class="balloons" aria-hidden="true"></div>
 
-  <!-- Main page content -->
+  <!-- Main content -->
   <main class="page" role="main">
     <section class="card" aria-labelledby="main-title">
-      <!-- Hero / Heading -->
       <header class="hero" role="banner">
         <div class="glow-wrap" aria-hidden="false">
           <span class="glow" aria-hidden="true"></span>
           <h1 id="main-title" class="title">
-            Happy Birthday Mahi
+            سالگرہ مبارک، ماہی
             <span class="header-emojis" aria-hidden="true">
               <span>🎉</span><span>🎂</span><span>✨</span>
             </span>
           </h1>
         </div>
-        <p class="subtitle">Wishing you a day filled with love, laughter, and magic.</p>
+        <p class="subtitle">آپ کے دن میں خوشیاں، محبت اور جادو بھر جائے۔</p>
 
-        <div style="height:18px"></div>
-
-        <div class="gift-cta" role="group" aria-label="Open gift">
-          <button class="btn" id="openGiftBtn" aria-label="Open gift – Gift खोलें" type="button">
-            🎁 Gift खोलें
+        <div class="gift-cta" role="group" aria-label="تحفہ کھولیں">
+          <button class="btn" id="openGiftBtn" aria-label="تحفہ کھولیں – 🎁" type="button">
+            🎁 تحفہ کھولیں
           </button>
         </div>
       </header>
 
-      <!-- Cake & Decorations -->
       <aside class="cake-zone" aria-hidden="false">
-        <div class="cake" role="img" aria-label="Birthday cake">
-          <!-- large cake emoji -->
+        <div class="cake" role="img" aria-label="سالگرہ کا کیک">
           <div class="cake-emoji" aria-hidden="true">🎂</div>
-
-          <!-- sparkles near cake -->
           <div class="sparkle" style="left:6%;top:14%; animation-delay:.1s"></div>
           <div class="sparkle small" style="left:85%;top:18%; animation-delay:.6s"></div>
           <div class="sparkle" style="left:50%;top:6%; animation-delay:.3s"></div>
           <div class="sparkle small" style="left:28%;top:38%; animation-delay:1.0s"></div>
         </div>
 
-        <div style="text-align:center">
-          <p style="margin:0;font-weight:700;color:var(--text)">Celebration for Mahi</p>
-          <p style="margin:6px 0 0 0;color:var(--muted);font-size:13px">Tap the gift to reveal your surprise</p>
+        <div style="text-align:center;direction:rtl">
+          <p style="margin:0;font-weight:800;color:var(--text)">ماہی کے لیے جشن</p>
+          <p style="margin:6px 0 0 0;color:var(--muted);font-size:13px">تحفہ کھولیں اور سرپرائز دیکھیں</p>
         </div>
       </aside>
     </section>
 
     <footer style="position:relative;z-index:12;margin-top:18px">
-      <small>Made with ❤️ — Open this file in your browser to view the surprise for Mahi.</small>
+      <small>یہ فائل براہِ راست اپنے براؤزر میں کھولیں — ماہی کے لیے مبارکباد!</small>
     </footer>
   </main>
 
-  <!-- Stage / Second Section: gift-open scene -->
-  <div class="stage" id="giftStage" aria-hidden="true" role="dialog" aria-label="Birthday gift for Mahi">
+  <!-- Gift stage -->
+  <div class="stage" id="giftStage" aria-hidden="true" role="dialog" aria-label="ماہی کے لیے تحفہ">
     <div class="gift-scene" role="document">
-      <!-- Gift visual -->
       <div class="gift" id="giftBox" aria-hidden="false">
         <div class="box-lid" id="boxLid">
           <div class="bow" aria-hidden="true">💝</div>
         </div>
         <div class="box-body ribbon" id="boxBody" aria-hidden="true"></div>
-
-        <!-- sparkles that will be created dynamically -->
       </div>
 
-      <!-- Message area (hidden until opened) -->
       <div class="message-wrap" id="messageWrap" aria-live="polite" aria-atomic="false"></div>
 
-      <!-- Celebrate again button -->
       <div class="celebrate-wrap" style="width:100%;justify-content:center">
-        <button class="btn secondary" id="celebrateAgainBtn" aria-label="Celebrate again" type="button">🎉 Celebrate Again</button>
+        <button class="btn secondary" id="celebrateAgainBtn" aria-label="دوبارہ جشن منائیں" type="button">🎉 دوبارہ جشن منائیں</button>
       </div>
     </div>
   </div>
 
   <script>
-    /*
-      Birthday Surprise for Mahi
-      Single-file HTML/CSS/JS with no external assets.
-      - Creates falling emoji/confetti
-      - Floating balloons
-      - Gift opening animation with generated chime
-      - Reveals a long heartfelt message (50-60 short lines) progressively
-      - Accessible and mobile-friendly
-    */
-
     (function(){
-      // ---------- Utility helpers ----------
+      // Utility
       const rand = (min, max) => Math.random() * (max - min) + min;
       const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
-      // ---------- Layers references ----------
+      // Elements
       const emojiLayer = document.querySelector('.emoji-layer');
       const balloonsLayer = document.querySelector('.balloons');
       const openGiftBtn = document.getElementById('openGiftBtn');
       const giftStage = document.getElementById('giftStage');
       const giftBox = document.getElementById('giftBox');
-      const boxLid = document.getElementById('boxLid');
-      const boxBody = document.getElementById('boxBody');
       const messageWrap = document.getElementById('messageWrap');
       const celebrateAgainBtn = document.getElementById('celebrateAgainBtn');
 
-      // Z-index note:
-      // emojiLayer z-index is 0, balloons z-index 1, page content z-index 10, stage z-index 30
-
-      // ---------- Falling emoji/confetti implementation ----------
-      // We'll create emoji DOM elements that fall from top to bottom smoothly using requestAnimationFrame.
-      // Keep count reasonable for performance on mobile.
-
-      const FALLING_COUNT = 28; // number of continuous falling emojis on screen
+      // Falling emojis settings
+      const FALLING_COUNT = 28;
       const fallingEmojis = ['🎈','🎂','🎉','🎁','✨','🥳','💖','🌸','⭐'];
       const confettiSet = [];
       let rafId = null;
 
       function initFallingEmojis(){
-        // Clear any existing
         emojiLayer.innerHTML = '';
         confettiSet.length = 0;
         const w = window.innerWidth;
         const h = window.innerHeight;
-
         for(let i=0;i<FALLING_COUNT;i++){
           const el = document.createElement('div');
           el.className = 'confetti';
@@ -586,20 +486,17 @@
           el.style.zIndex = 0;
           const emoji = fallingEmojis[Math.floor(Math.random()*fallingEmojis.length)];
           el.textContent = emoji;
-          // random font-size
           const size = Math.round(rand(18, 36));
           el.style.fontSize = size + 'px';
           el.style.left = Math.round(rand(0, w)) + 'px';
           el.style.top = Math.round(rand(-h, -20)) + 'px';
           el.style.opacity = clamp(rand(0.6, 1.0), 0.2, 1);
           el.style.transform = `translate3d(0,0,0) rotate(${rand(0,360)}deg)`;
-          // layer append
           emojiLayer.appendChild(el);
 
-          // velocity and sway
-          const velocityY = rand(30, 110); // px per second
+          const velocityY = rand(30, 110);
           const sway = rand(20, 90);
-          const rotationSpeed = rand(-60, 60); // deg per second
+          const rotationSpeed = rand(-60, 60);
 
           confettiSet.push({
             el, x: parseFloat(el.style.left), y: parseFloat(el.style.top),
@@ -607,26 +504,20 @@
             sway, rot: rand(0,360), rotationSpeed, size
           });
         }
-
-        // ensure layer is behind content
         emojiLayer.style.zIndex = 0;
       }
 
-      // Animation loop for falling confetti
       let lastTime = performance.now();
       function animateFalling(now){
-        const dt = Math.min(40, now - lastTime) / 1000; // seconds
+        const dt = Math.min(40, now - lastTime) / 1000;
         lastTime = now;
         const h = window.innerHeight;
         const w = window.innerWidth;
         for(const c of confettiSet){
-          // vertical movement
           c.y += c.vy * dt;
-          // horizontal sway using sine wave
           c.x += Math.sin((now/1000) * rand(0.6,1.2) + c.x) * (c.sway/200) * dt * 60 + c.vx * dt;
           c.rot += c.rotationSpeed * dt;
 
-          // wrap or reset if below screen
           if(c.y > h + 60 || c.x < -80 || c.x > w + 80){
             c.y = rand(-200, -40);
             c.x = rand(0, w);
@@ -643,50 +534,36 @@
         rafId = requestAnimationFrame(animateFalling);
       }
 
-      // ---------- Floating balloons in background ----------
+      // Balloons
       const BALLOON_COUNT = 8;
-      const balloonEls = [];
-
       function initBalloons(){
         balloonsLayer.innerHTML = '';
-        balloonEls.length = 0;
-        const colors = ['#FF8FB1','#FFD36B','#7BE6FF','#C9A7FF','#FFB7E0','#9EF0C0'];
         for(let i=0;i<BALLOON_COUNT;i++){
           const b = document.createElement('div');
           b.className = 'balloon';
           b.textContent = '🎈';
           const size = Math.round(rand(36,72));
           b.style.fontSize = size+'px';
-          // position random
           const left = Math.round(rand(6,94));
           const top = Math.round(rand(8,70));
           b.style.left = left + '%';
           b.style.top = top + '%';
           b.style.opacity = rand(0.45,0.95);
-          b.style.transform = `translateX(0)`;
           b.style.animation = `floaty ${rand(4.2,7.4)}s ease-in-out ${rand(0,2)}s infinite`;
-          // slight color tint using filter (since emoji is colored, we add subtle shadows)
-          b.style.filter = `drop-shadow(0 6px 14px rgba(0,0,0,0.35))`;
           balloonsLayer.appendChild(b);
-          balloonEls.push(b);
         }
         balloonsLayer.style.zIndex = 1;
       }
 
-      // ---------- Gift opening, sparkles, sound ----------
+      // Gift open sequence
       function openGift(){
-        // show the stage
         giftStage.classList.add('show');
         giftStage.setAttribute('aria-hidden','false');
 
-        // animate lid open after a small delay to make it feel real
         setTimeout(()=> {
           giftBox.classList.add('open');
-          // create internal sparkles
           createInsideSparkles();
-          // play a short generated chime
           playChime();
-          // reveal message after lid opens gracefully
           setTimeout(()=> {
             revealMessage();
           }, 900);
@@ -694,21 +571,16 @@
       }
 
       function closeGiftStage(){
-        // hide message and reset
         messageWrap.classList.remove('show');
         messageWrap.innerHTML = '';
         giftBox.classList.remove('open');
-        // hide stage
         giftStage.classList.remove('show');
         giftStage.setAttribute('aria-hidden','true');
       }
 
-      // Create sparkles inside the gift briefly
       function createInsideSparkles(){
-        // remove old sparkles
         const existing = giftBox.querySelectorAll('.inside-sparkle');
         existing.forEach(e => e.remove());
-        // create several sparkles with random positions
         for(let i=0;i<14;i++){
           const s = document.createElement('div');
           s.className = 'inside-sparkle';
@@ -717,17 +589,12 @@
           s.style.background = `linear-gradient(135deg, hsl(${rand(250,360)}deg 90% 68%), hsl(${rand(30,120)}deg 90% 70%))`;
           s.style.animationDelay = (i*80) + 'ms';
           giftBox.appendChild(s);
-          // remove after animation ends
           setTimeout(()=> s.remove(), 1800 + rand(0,400));
         }
-
-        // also burst some confetti emojis up
         burstConfetti(giftBox.getBoundingClientRect());
       }
 
-      // Burst confetti upward from the gift position
       function burstConfetti(rect){
-        // number of pieces
         const burstCount = 26;
         for(let i=0;i<burstCount;i++){
           const el = document.createElement('div');
@@ -740,7 +607,6 @@
           el.style.zIndex = 40;
           document.body.appendChild(el);
 
-          // animate using CSS transitions via JS
           const angle = rand(-120, -60) * (Math.PI/180);
           const speed = rand(220,480);
           const vx = Math.cos(angle) * speed;
@@ -766,7 +632,7 @@
         }
       }
 
-      // Generate short melodic chime using WebAudio API (no external files)
+      // Sound: synthesized chime
       function playChime(){
         try{
           const ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -791,88 +657,79 @@
             o.stop(t + 0.6 + i*0.12);
             t += 0.12;
           }
-          // fade out master
           gain.gain.linearRampToValueAtTime(0, t + 1.2);
-          // close AudioContext after short delay to free resources
           setTimeout(()=> ctx.close(), 1400);
         }catch(e){
-          // Audio may be blocked or unsupported — ignore silently
-          // (No console errors to user)
+          // ignore
         }
       }
 
-      // ---------- Message content (50-60 short lines) ----------
-      // We'll generate a handcrafted heartfelt message for Mahi, 55 short lines.
+      // Urdu message lines (55 short lines)
       const messageLines = [
-        "Dear Mahi,",
-        "आज का दिन तुम्हारे लिए बहुत खास है।",
-        "तुम्हारी मुस्कान सबसे प्यारी चीज़ है।",
-        "तुम्हारी दोस्ती मेरे लिए एक उपहार है।",
-        "हर पल जो हमने साथ बिताया, यादगार है।",
-        "तुम्हारी हँसी ने मुश्किल दिनों में रोशनी दी।",
-        "तुम्हारे साथ की हर याद मेरे दिल में है।",
-        "तुम हमेशा मददगार और दिल से अच्छी हो।",
-        "तुम्हारी मेहनत और लगन प्रेरणादायक है।",
-        "तुम्हारे सपने बड़े और खूबसूरत हों।",
-        "मैं तुम्हारे हर छोटे और बड़े जीत पर खुश हूँ।",
-        "तुम्हें सफलता मिले, यही मेरी कामना है।",
-        "तुम्हारा हर दिन खुशियों से भरा रहे।",
-        "तुम्हारी सेहत हमेशा बेहतरीन रहे।",
-        "नए साल में अच्छे मौके और नई राहें मिलें।",
-        "तुम्हारी मुस्कान हमेशा बनी रहे।",
-        "तुम्हे हमेशा सच्चे दोस्त और प्यार मिले।",
-        "तुम्हारी हर कहानी में मिठास और हँसी हो।",
-        "तुम्हारे पास हमेशा सीखने की जिज्ञासा बनी रहे।",
-        "तुम्हारा दिल गोल्ड की तरह कोमल और चालाक रहो।",
-        "हमारी दोस्ती सालों तक ऐसे ही चमकती रहे।",
-        "तुम हर चुनौती को हिम्मत से पार करोगी।",
-        "हर नया दिन तुम्हें नई खुशियाँ दे।",
-        "यादें जो हमने बनाई, जीवन भर साथ रहें।",
-        "तुम्हारी अच्छाइयाँ और बढ़ें, यही दुआ है।",
-        "तुम्हारे हर फैसला में सफलता और शांति हो।",
-        "तुम्हें वो सब मिले जो तुम दिल से चाहती हो।",
-        "छोटी-छोटी खुशियाँ तुम्हें बड़ी खुशी दें।",
-        "तुम्हारे चेहरे पर हमेशा चमक बनी रहे।",
-        "तुम्हारे सपने हक़ीकत में बदलें जल्दी।",
-        "तुम्हारे साथ बहुत सारी मस्ती और हँसी हो।",
-        "तुम्हारे रास्तों में प्यार और सम्मान हो।",
-        "तुम हमेशा सुरक्षित और खुश रहो।",
-        "मैं तुम्हारे लिए हमेशा शुक्रगुज़ार हूँ।",
-        "तुमने मेरे जीवन को रंगों से भर दिया है।",
-        "तुम्हारी आँखों में उम्मीद की किरण हो।",
-        "हर मोड़ पर तुम्हें अच्छा साथी मिले।",
-        "तुम हमेशा नई उपलब्धियाँ हासिल करो।",
-        "तुम्हारी आत्मा की खूबसूरती सबको छूए।",
-        "तुम्हारी हिम्मत और नज़ाकत अनमोल है।",
-        "जीवन में तुम्हें नयी यात्राओं का मज़ा मिले।",
-        "तुम्हारे हर साल में बढ़ती खुशी दिखे।",
-        "तुम्हारा दिल हमेशा छलकता रहे प्यार से।",
-        "तुम्हें वो प्यार मिले जो तुम चाहती हो।",
-        "तुम्हारा हर कल आज से भी बेहतर हो।",
-        "तुम्हें हास्य और आराम दोनों मिले बराबर।",
-        "हमेशा सच्चा दोस्त बने रहना मेरा वादा है।",
-        "तुम्हारी खुशियाँ मेरी भी खुशियाँ हैं।",
-        "आज का दिन यादगार हो — सबसे सुंदर पल।",
-        "खुश रहो, स्वस्थ रहो, और चमकती रहो।",
-        "With all my love — wishing you an amazing year ahead.",
-        "Happy Birthday, Mahi! 🥳",
-        "Love always, Your friend."
+        "پیارے ماہی،",
+        "آج کا دن تمہارے لیے بے حد خاص ہے۔",
+        "تمہاری مسکراہٹ ہمارے دلوں کو روشن کرتی ہے۔",
+        "تمہاری دوستی میری زندگی کا قیمتی حصہ ہے۔",
+        "ہم نے ساتھ مل کر جو خوبصورت یادیں بنائیں، وہ ہمیشہ ساتھ رہیں گی۔",
+        "تمہاری ہنسی نے مشکل دنوں میں سکون دیا ہے۔",
+        "تم ہمیشہ دل سے مدد کرتی ہو اور اس کے لیے شکر گزار ہوں۔",
+        "تمہاری محنت اور لگن سب کے لیے مثال ہے۔",
+        "خدا کرے تمہارے تمام خواب حقیقت بنیں۔",
+        "تم ہر کامیابی کے مستحق ہو، اور میں ہمیشہ تمہارا ساتھ دوں گا۔",
+        "خوشیاں تمہارے ہر دن میں بسیں۔",
+        "صحت مند رہو اور ہمیشہ توانائی سے بھرپور رہو۔",
+        "نئے سال میں نئے مواقع تمہیں ملیں۔",
+        "تمہاری ہر شروعات کامیاب ہو۔",
+        "ہمیشہ امن اور خوشی تمہارے حصے میں ہو۔",
+        "تمہاری شخصیت میں جو نرمی ہے وہ سب کو بھاتی ہے۔",
+        "ہر لمحہ تمہیں خوشگوار یادیں دے جائے۔",
+        "تمہارا دل نرم اور حوصلہ مضبوط رہے۔",
+        "ہماری دوستی ہر دن مضبوط ہوتی جائے۔",
+        "تم ہر چیلنج کا مقابلہ ہمت سے کرو گی۔",
+        "چھوٹی چھوٹی خوشیاں تمہیں بڑا سکون دیں۔",
+        "تمہاری ہر مسکراہٹ میرے لیے بہت معنی رکھتی ہے۔",
+        "تم ہمیشہ اپنے راستے خود روشن کرو گی۔",
+        "نئی یادیں، نئی کامیابیاں تمہیں ملیں۔",
+        "تمہارے پاس بہترین دوست اور پیار ہو۔",
+        "دل کی گہرائی سے تمہارے لیے خوشیاں مانگتا ہوں۔",
+        "تم ہر دن نئے جوش کے ساتھ جیو۔",
+        "ہر سال تمہاری زندگی میں محبت بڑھتی جائے۔",
+        "تمہارے ہر قدم پر کامیابی اور سکون ہوں۔",
+        "تم اپنی راہوں میں روشنی بکھرتی رہو۔",
+        "تم جو چاہو وہ حاصل کرو — میں تمہیں خوش دیکھنا چاہتا ہوں۔",
+        "تمہاری ہر کہانی میں خوشی اور امید ہو۔",
+        "تم جو بھی فیصلہ لو، کامیاب ہو جاؤ۔",
+        "ہماری یادیں زندگی بھر ساتھ رہیں گی۔",
+        "تم ہمیشہ اپنے اندر خود اعتمادی محسوس کرو۔",
+        "نیک خواہشات ہمیشہ تمہارے ساتھ رہیں۔",
+        "تمہاری مسکراہٹ کبھی ماند نہ ہو۔",
+        "ہر نیا دن تمہیں خوشی دے۔",
+        "تمہاری زندگی خوبصورت لمحوں سے بھر جائے۔",
+        "تمہاری صحت خوب اچھی رہے اور تم تندرست رہو۔",
+        "تم کے لیے خوشی، امن اور کامیابی کی دعا ہے۔",
+        "تمہاری روح میں محبت اور گرمجوشی ہمیشہ رہے۔",
+        "تمہارے تمام راستے آسان ہوں اور کامیاب ہوں۔",
+        "میں تمہاری ہر خوشی میں شریک رہنا چاہتا ہوں۔",
+        "تمہارے ہر کل میں پہلے سے بہتر امید ہے۔",
+        "ہمیشہ سچائی اور محبت تمہارا ساتھ دے۔",
+        "میری سچی دعا ہے کہ تم ہر دن خوش رہو۔",
+        "آج کا دن تمہارے لیے زندگی کا خوبصورت لمحہ بنے۔",
+        "ماہی، تمہیں بے حد ساری محبت اور پیار۔",
+        "سالگرہ مبارک، میری پیاری ماہی! 🥳",
+        "ہمیشہ خوش رہو، محفوظ رہو اور کامیاب ہو۔",
+        "ہمیشہ یاد رکھو کہ تم خاص ہو — بہت خاص۔",
+        "محبت کے ساتھ، تمہارا دوست۔"
       ];
-      // Ensure there are between 50-60 lines; currently we have 55 lines (count them)
-      // (They're intentionally short lines as requested)
 
-      // ---------- Reveal message gradually ----------
+      // Reveal message with typing-like animation
       let typingIndex = 0;
       function revealMessage(){
         messageWrap.innerHTML = '';
         messageWrap.classList.add('show');
         messageWrap.scrollTop = 0;
         typingIndex = 0;
-
-        // For accessibility: announce
         messageWrap.setAttribute('aria-live', 'polite');
 
-        // We'll type each line with a per-character typing effect, but to keep pace, we type per-line with a short character delay
         function typeNextLine(){
           if(typingIndex >= messageLines.length) return;
           const text = messageLines[typingIndex];
@@ -880,12 +737,10 @@
           p.className = 'line';
           messageWrap.appendChild(p);
 
-          // smooth fade-in + typing per character
           const totalChars = text.length;
           let pos = 0;
-          const charDelay = clamp(8 + Math.round(420/Math.max(1,totalChars)), 6, 28); // ms between chars
+          const charDelay = clamp(8 + Math.round(420/Math.max(1,totalChars)), 6, 28);
           p.textContent = '';
-          // reveal container scroll if needed
           const writer = setInterval(()=>{
             pos++;
             p.textContent = text.slice(0,pos);
@@ -894,80 +749,59 @@
             if(pos >= totalChars){
               clearInterval(writer);
               typingIndex++;
-              // short pause between lines
               setTimeout(typeNextLine, 120);
             }
           }, charDelay);
         }
-        // start typing
         typeNextLine();
       }
 
-      // ---------- Restart celebration ----------
       function restartCelebration(){
-        // close stage
         closeGiftStage();
-        // small delay before bringing back intro
         setTimeout(()=>{
-          // restart confetti (reinitialize to new random positions)
           initFallingEmojis();
         }, 360);
       }
 
-      // ---------- Event wiring ----------
+      // Event listeners
       openGiftBtn.addEventListener('click', ()=> {
-        // smoothly fade/hide the first page card while opening stage
-        // animate the page card down a bit to show transition
         document.querySelector('.card').style.transform = 'translateY(6vh) scale(.985)';
         document.querySelector('.card').style.opacity = '0.24';
-        // show stage after tiny delay
         setTimeout(()=> {
           openGift();
         }, 260);
       });
 
       celebrateAgainBtn.addEventListener('click', ()=> {
-        // celebrate again: close stage and restart animations
-        // animate closing
-        // restore the main card
         document.querySelector('.card').style.transform = '';
         document.querySelector('.card').style.opacity = '';
-        // small celebration confetti
         const rect = giftBox.getBoundingClientRect();
         burstConfetti(rect);
         setTimeout(restartCelebration, 420);
       });
 
-      // Also allow clicking outside the gift scene to close (accessibility)
       giftStage.addEventListener('click', (e)=>{
         if(e.target === giftStage){
-          // close and return to intro
           document.querySelector('.card').style.transform = '';
           document.querySelector('.card').style.opacity = '';
           closeGiftStage();
-          // restart confetti
           initFallingEmojis();
         }
       });
 
-      // Prevent page from scrolling while stage open (touch)
       giftStage.addEventListener('touchmove', (e)=> {
         if(giftStage.classList.contains('show')) e.preventDefault();
       }, {passive:false});
 
-      // ---------- Initialize everything ----------
+      // Initialize
       function init(){
         initBalloons();
         initFallingEmojis();
         lastTime = performance.now();
         if(rafId) cancelAnimationFrame(rafId);
         rafId = requestAnimationFrame(animateFalling);
-
-        // Place a few decorative confetti in the card front foreground (but behind buttons)
-        // Done via emojiLayer already.
       }
 
-      // Handle resize to reposition confetti nicely
       let resizeTimer = null;
       window.addEventListener('resize', ()=> {
         clearTimeout(resizeTimer);
@@ -976,21 +810,14 @@
         }, 220);
       });
 
-      // Kick off
-      init();
-
-      // Ensure no console errors for missing inputs; keep safe checks
-      // Accessibility: focus open gift button on load for keyboard users
       window.addEventListener('load', ()=>{
+        init();
         openGiftBtn.focus({preventScroll:true});
       });
 
-      // Prevent accidental text selection on double-tap for mobile
+      // Prevent text selection double-tap on mobile
       document.body.style.userSelect = 'none';
-
-      // Ensure stage elements are hidden until needed
-      giftStage.classList.remove('show');
     })();
   </script>
 </body>
-</html>
+  </html>
